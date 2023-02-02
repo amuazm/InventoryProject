@@ -1,4 +1,4 @@
 package com.example.projecttest.models;
 
-public class UserModel {
+public class ProductHistoryRecord {
 }
