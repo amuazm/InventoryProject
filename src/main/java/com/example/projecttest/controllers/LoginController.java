@@ -1,5 +1,6 @@
 package com.example.projecttest.controllers;
 
+import com.example.projecttest.views.HomeView;
 import com.example.projecttest.views.SignUpView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,8 +25,8 @@ public class LoginController {
     private TextField txtUsername;
 
     @FXML
-    void onLoginClicked(ActionEvent event) {
-
+    void onLoginClicked(ActionEvent event) throws Exception {
+        HomeView.open(primaryStage);
     }
 
     @FXML
