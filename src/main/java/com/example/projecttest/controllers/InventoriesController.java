@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
+import java.io.IOException;
+
 public class InventoriesController {
 
     @FXML
@@ -21,8 +23,8 @@ public class InventoriesController {
     private ListView<?> lvInventories;
 
     @FXML
-    void onAddClicked(ActionEvent event) {
-
+    void onAddClicked(ActionEvent event) throws IOException {
+        InventoryApplication.openInventoryConfig();
     }
 
     @FXML
