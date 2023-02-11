@@ -51,4 +51,8 @@ public class InventoryApplication extends javafx.application.Application {
     public static void openReport() throws IOException {
         open("report.fxml");
     }
+
+    public static void openNotifications() throws IOException {
+        open("notifications.fxml");
+    }
 }

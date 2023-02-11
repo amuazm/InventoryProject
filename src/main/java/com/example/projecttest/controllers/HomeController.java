@@ -33,8 +33,8 @@ public class HomeController {
     }
 
     @FXML
-    void onNotificationsClicked(ActionEvent event) {
-
+    void onNotificationsClicked(ActionEvent event) throws IOException {
+        InventoryApplication.openNotifications();
     }
 
     @FXML
