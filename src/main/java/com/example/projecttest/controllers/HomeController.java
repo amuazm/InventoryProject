@@ -28,8 +28,8 @@ public class HomeController {
     private Button btnLogout;
 
     @FXML
-    void onInventoriesClicked(ActionEvent event) {
-
+    void onInventoriesClicked(ActionEvent event) throws IOException {
+        InventoryApplication.openInventories();
     }
 
     @FXML
