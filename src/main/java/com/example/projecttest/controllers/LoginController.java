@@ -30,8 +30,7 @@ public class LoginController {
 
     @FXML
     void onSignUpClicked(ActionEvent event) throws Exception {
-        SignUpView signUpView = new SignUpView();
-        signUpView.start(primaryStage);
+        SignUpView.open(primaryStage);
     }
 
 }

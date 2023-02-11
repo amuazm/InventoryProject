@@ -15,4 +15,9 @@ public class LoginView extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static void open(Stage stage) throws Exception {
+        LoginView loginView = new LoginView();
+        loginView.start(stage);
+    }
 }

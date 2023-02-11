@@ -15,4 +15,9 @@ public class SignUpView extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static void open(Stage stage) throws Exception {
+        SignUpView signUpView = new SignUpView();
+        signUpView.start(stage);
+    }
 }
