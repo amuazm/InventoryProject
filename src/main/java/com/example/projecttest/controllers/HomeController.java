@@ -37,7 +37,7 @@ public class HomeController {
 
     @FXML
     void onOrdersClicked(ActionEvent event) throws Exception {
-        InventoryApplication.openOrders();
+        InventoryApplication.openOrders(InventoryApplication.primaryStage.getScene());
     }
 
     @FXML

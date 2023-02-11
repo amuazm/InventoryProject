@@ -1,5 +1,6 @@
 package com.example.projecttest;
 
+import com.example.projecttest.controllers.OrdersController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -43,9 +44,11 @@ public class InventoryApplication extends javafx.application.Application {
         primaryStage.show();
     }
 
-    public static void openOrders() throws IOException {
+    public static void openOrders(Scene previousScene) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(InventoryApplication.class.getResource("orders.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        OrdersController controller = fxmlLoader.getController();
+        controller.setPreviousScene(previousScene);
         primaryStage.setTitle("Hello!");
         primaryStage.setScene(scene);
         primaryStage.show();
