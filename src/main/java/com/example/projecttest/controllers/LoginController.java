@@ -28,7 +28,7 @@ public class LoginController {
 
     @FXML
     void onSignUpClicked(ActionEvent event) throws Exception {
-        InventoryApplication.openSignup();
+        InventoryApplication.openSignUp();
     }
 
 }
