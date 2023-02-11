@@ -6,13 +6,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-public class OrdersController {
+public class ReportController {
 
     @FXML
     private Button btnBack;
 
     @FXML
-    private ListView<?> lvOrders;
+    private ListView<?> lvReport;
 
     @FXML
     void onBackClicked(ActionEvent event) {

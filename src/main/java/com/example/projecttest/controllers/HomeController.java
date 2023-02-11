@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.io.IOException;
+
 public class HomeController {
 
     @FXML
@@ -46,8 +48,8 @@ public class HomeController {
     }
 
     @FXML
-    void onReportsClicked(ActionEvent event) {
-
+    void onReportsClicked(ActionEvent event) throws IOException {
+        InventoryApplication.openReport();
     }
 
     @FXML

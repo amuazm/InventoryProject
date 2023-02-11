@@ -1,6 +1,5 @@
 package com.example.projecttest;
 
-import com.example.projecttest.controllers.OrdersController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -19,6 +18,10 @@ public class InventoryApplication extends javafx.application.Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static void back() {
+        primaryStage.setScene(previousScene);
     }
 
     private static void open(String fxmlName) throws IOException {
@@ -43,5 +46,9 @@ public class InventoryApplication extends javafx.application.Application {
 
     public static void openOrders() throws IOException {
         open("orders.fxml");
+    }
+
+    public static void openReport() throws IOException {
+        open("report.fxml");
     }
 }
