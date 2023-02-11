@@ -43,8 +43,8 @@ public class HomeController {
     }
 
     @FXML
-    void onProductsClicked(ActionEvent event) {
-
+    void onProductsClicked(ActionEvent event) throws IOException {
+        InventoryApplication.openProducts();
     }
 
     @FXML
