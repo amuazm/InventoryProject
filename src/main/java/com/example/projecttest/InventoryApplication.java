@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.Stack;
 
 public class InventoryApplication extends javafx.application.Application {
-    public static Stage primaryStage;
-    public static Stack<Scene> sceneStack;
+    private static Stage primaryStage;
+    private static Stack<Scene> sceneStack;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -76,5 +76,13 @@ public class InventoryApplication extends javafx.application.Application {
 
     public static void openProducts() throws IOException {
         open("products.fxml");
+    }
+
+    public static void openProduct() throws IOException {
+        open("product.fxml");
+    }
+
+    public static void openProductConfig() throws IOException {
+        open("product-config.fxml");
     }
 }
