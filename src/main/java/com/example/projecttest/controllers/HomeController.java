@@ -1,11 +1,9 @@
 package com.example.projecttest.controllers;
 
-import com.example.projecttest.views.LoginView;
+import com.example.projecttest.InventoryApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
-import static com.example.projecttest.InventoryApplication.primaryStage;
 
 public class HomeController {
 
@@ -38,8 +36,8 @@ public class HomeController {
     }
 
     @FXML
-    void onOrdersClicked(ActionEvent event) {
-
+    void onOrdersClicked(ActionEvent event) throws Exception {
+        InventoryApplication.openOrders();
     }
 
     @FXML
@@ -54,7 +52,7 @@ public class HomeController {
 
     @FXML
     void onLogoutClicked(ActionEvent event) throws Exception {
-        LoginView.open(primaryStage);
+        InventoryApplication.openLogin();
     }
 
 }

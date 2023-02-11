@@ -1,14 +1,11 @@
 package com.example.projecttest.controllers;
 
-import com.example.projecttest.views.HomeView;
-import com.example.projecttest.views.SignUpView;
+import com.example.projecttest.InventoryApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import static com.example.projecttest.InventoryApplication.primaryStage;
 
 public class LoginController {
 
@@ -26,12 +23,12 @@ public class LoginController {
 
     @FXML
     void onLoginClicked(ActionEvent event) throws Exception {
-        HomeView.open(primaryStage);
+        InventoryApplication.openHome();
     }
 
     @FXML
     void onSignUpClicked(ActionEvent event) throws Exception {
-        SignUpView.open(primaryStage);
+        InventoryApplication.openSignup();
     }
 
 }
