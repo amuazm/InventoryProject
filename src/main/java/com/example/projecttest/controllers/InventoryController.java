@@ -12,6 +12,8 @@ import javafx.scene.control.ListView;
 
 import java.io.IOException;
 
+import static com.example.projecttest.InventoryApplication.allProducts;
+
 public class InventoryController {
 
     private Inventory inventory;
@@ -45,7 +47,11 @@ public class InventoryController {
 
     @FXML
     void onRemoveProductClicked(ActionEvent event) {
-
+        Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            inventory.getProducts().remove(selectedProduct);
+            initialize();
+        }
     }
 
     @FXML
