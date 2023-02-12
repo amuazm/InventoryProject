@@ -1,5 +1,7 @@
 package com.example.projecttest.controllers;
 
+import com.example.projecttest.models.Inventory;
+import com.example.projecttest.models.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +11,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class ProductStockController {
+
+    private Inventory inventory;
+
+    private Product product;
 
     @FXML
     private Button btnBack;
@@ -100,4 +106,23 @@ public class ProductStockController {
 
     }
 
+    @FXML
+    private void initialize() {
+        if (inventory == null || product == null) {
+            return;
+        }
+
+        lblProductName.setText(product.getName());
+        lblInventoryName.setText(inventory.getName());
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+        initialize();
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        initialize();
+    }
 }

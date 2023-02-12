@@ -45,6 +45,8 @@ public class InventoryApplication extends javafx.application.Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // push should be put at the first line
+        // printing should be at the end
         sceneStackStr.push(fxmlName);
         sceneStackStr.forEach(s -> System.out.print(s + ", "));
         System.out.println();
@@ -129,5 +131,13 @@ public class InventoryApplication extends javafx.application.Application {
 
         ProductConfigController productConfigController = fxmlLoader.getController();
         productConfigController.setProduct(product);
+    }
+
+    public static void openProductStock(Inventory inventory, Product product) throws IOException {
+        FXMLLoader fxmlLoader = open("product-stock.fxml");
+
+        ProductStockController productStockController = fxmlLoader.getController();
+        productStockController.setInventory(inventory);
+        productStockController.setProduct(product);
     }
 }

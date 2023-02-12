@@ -1,19 +1,20 @@
 package com.example.projecttest.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventory {
     private String name;
     private String address;
     private String notes;
 
-    private ArrayList<Product> products;
+    private HashMap<Product, ProductOrderRules> products;
 
     public Inventory(String name, String address, String notes) {
         this.name = name;
         this.address = address;
         this.notes = notes;
-        products = new ArrayList<>();
+        products = new HashMap<>();
     }
 
     public String getName() {
@@ -40,11 +41,15 @@ public class Inventory {
         this.notes = notes;
     }
 
-    public ArrayList<Product> getProducts() {
+    public HashMap<Product, ProductOrderRules> getProducts() {
         return products;
     }
 
-    public void setProducts(ArrayList<Product> products) {
+    public ArrayList<Product> getProductsAsArrayList() {
+        return new ArrayList<>(products.keySet());
+    }
+
+    public void setProducts(HashMap<Product, ProductOrderRules> products) {
         this.products = products;
     }
 

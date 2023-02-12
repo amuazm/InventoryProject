@@ -77,6 +77,7 @@ public class ProductsController {
             }
         });
 
+        // Double-click on items
         lvProducts.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
@@ -85,8 +86,7 @@ public class ProductsController {
                         if (!isAddingToInventory) {
                             InventoryApplication.openProduct(selectedProduct);
                         } else {
-                            inventory.getProducts().add(selectedProduct);
-                            InventoryApplication.openInventory(inventory);
+                            InventoryApplication.openProductStock(inventory, selectedProduct);
                             InventoryApplication.unbackable();
                         }
                     } catch (IOException e) {

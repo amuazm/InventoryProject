@@ -77,9 +77,23 @@ public class InventoryController {
             return;
         }
 
-        lvProducts.setItems(FXCollections.observableArrayList(inventory.getProducts()));
-
         lblInventoryName.setText(inventory.getName());
+
+        lvProducts.setItems(FXCollections.observableArrayList(inventory.getProductsAsArrayList()));
+
+        // Double-click on items
+        lvProducts.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
+                if (selectedProduct != null) {
+                    try {
+                        InventoryApplication.openProductStock(inventory, selectedProduct);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
     }
 
     public void setInventory(Inventory inventory) {
