@@ -12,14 +12,12 @@ import java.util.Stack;
 
 public class InventoryApplication extends javafx.application.Application {
     private static Stage primaryStage;
-    private static Stack<Scene> sceneStack;
     private static Stack<String> sceneStackStr;
     public static ArrayList<Product> products = new ArrayList<>();
 
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = new Stage();
-        sceneStack = new Stack<>();
         sceneStackStr = new Stack<>();
         openLogin();
     }
@@ -29,17 +27,12 @@ public class InventoryApplication extends javafx.application.Application {
     }
 
     public static void back() throws IOException {
-        sceneStack.pop();
         sceneStackStr.pop();
-
-        sceneStack.pop();
         String toReInit = sceneStackStr.pop();
-
         open(toReInit);
     }
 
     public static void unbackable() {
-        sceneStack.pop();
         sceneStackStr.pop();
     }
 
@@ -49,11 +42,8 @@ public class InventoryApplication extends javafx.application.Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        sceneStack.push(scene);
         sceneStackStr.push(fxmlName);
-        for (String s : sceneStackStr) {
-            System.out.print(s + ", ");
-        }
+        sceneStackStr.forEach(s -> System.out.print(s + ", "));
         System.out.println();
 
         return fxmlLoader;

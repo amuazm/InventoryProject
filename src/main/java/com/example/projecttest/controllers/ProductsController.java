@@ -37,7 +37,6 @@ public class ProductsController {
 
     @FXML
     void onBackClicked(ActionEvent event) throws IOException {
-        System.out.println("I was clicked");
         InventoryApplication.back();
     }
 
