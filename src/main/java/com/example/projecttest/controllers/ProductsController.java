@@ -71,6 +71,19 @@ public class ProductsController {
                 }
             }
         });
+
+        lvProducts.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
+                if (selectedProduct != null) {
+                    try {
+                        InventoryApplication.openProduct(selectedProduct);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
     }
 
 }
