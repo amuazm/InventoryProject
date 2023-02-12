@@ -36,9 +36,9 @@
       <ListView fx:id="lvInventories" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7" />
       <Text fx:id="txtName" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Text fx:id="txtSKU" strokeType="OUTSIDE" strokeWidth="0.0" text="SKU" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Text fx:id="txtLink" strokeType="OUTSIDE" strokeWidth="0.0" text="LINK" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Text fx:id="txtCost" strokeType="OUTSIDE" strokeWidth="0.0" text="COST" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Text fx:id="txtPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Text fx:id="txtOrderLink" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER LINK" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Text fx:id="txtOrderCost" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER COST" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Text fx:id="txtSellingPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="SELLING PRICE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Button fx:id="btnEditProduct" mnemonicParsing="false" onAction="#onEditProductClicked" text="Edit Product" GridPane.rowIndex="8" />
       <Button fx:id="btnDeleteProduct" mnemonicParsing="false" onAction="#onDeleteProductClicked" text="Delete Product" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <Button fx:id="btnBack" mnemonicParsing="false" onAction="#onBackClicked" text="Back" GridPane.rowIndex="9" />

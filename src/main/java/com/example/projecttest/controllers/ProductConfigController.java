@@ -1,12 +1,15 @@
 package com.example.projecttest.controllers;
 
 import com.example.projecttest.InventoryApplication;
+import com.example.projecttest.models.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+
+import static com.example.projecttest.InventoryApplication.products;
 
 public class ProductConfigController {
 
@@ -38,7 +41,16 @@ public class ProductConfigController {
 
     @FXML
     void onSaveClicked(ActionEvent event) throws IOException {
-        InventoryApplication.openProduct();
+        Product product = new Product(
+                tfName.getText(),
+                tfSKU.getText(),
+                tfOrderLink.getText(),
+                Double.parseDouble(tfOrderCost.getText()),
+                Double.parseDouble(tfSellingPrice.getText())
+        );
+        System.out.println(product);
+        products.add(product);
+        InventoryApplication.openProduct(product);
     }
 
 }

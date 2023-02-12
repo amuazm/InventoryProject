@@ -1,6 +1,7 @@
 package com.example.projecttest.controllers;
 
 import com.example.projecttest.InventoryApplication;
+import com.example.projecttest.models.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class ProductController {
+    private Product product;
 
     @FXML
     private Button btnBack;
@@ -24,16 +26,16 @@ public class ProductController {
     private ListView<?> lvInventories;
 
     @FXML
-    private Text txtCost;
+    private Text txtOrderCost;
 
     @FXML
-    private Text txtLink;
+    private Text txtOrderLink;
 
     @FXML
     private Text txtName;
 
     @FXML
-    private Text txtPrice;
+    private Text txtSellingPrice;
 
     @FXML
     private Text txtSKU;
@@ -53,4 +55,20 @@ public class ProductController {
 
     }
 
+    private void refresh() {
+        if (product == null) {
+            return;
+        }
+
+        txtName.setText(product.getName());
+        txtSKU.setText(product.getSKU());
+        txtOrderLink.setText(product.getOrderLink());
+        txtOrderCost.setText(String.valueOf(product.getOrderCost()));
+        txtSellingPrice.setText(String.valueOf(product.getSellingPrice()));
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        refresh();
+    }
 }

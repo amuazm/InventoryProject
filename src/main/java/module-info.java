@@ -7,4 +7,6 @@ module com.example.projecttest {
     exports com.example.projecttest;
     exports com.example.projecttest.controllers;
     opens com.example.projecttest.controllers to javafx.fxml;
+
+    exports com.example.projecttest.models;
 }
