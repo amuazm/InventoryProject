@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
+import java.io.IOException;
+
 public class OrdersController {
 
     @FXML
@@ -15,7 +17,7 @@ public class OrdersController {
     private ListView<?> lvOrders;
 
     @FXML
-    void onBackClicked(ActionEvent event) {
+    void onBackClicked(ActionEvent event) throws IOException {
         InventoryApplication.back();
     }
 

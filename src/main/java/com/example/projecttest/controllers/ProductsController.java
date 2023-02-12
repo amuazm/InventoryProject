@@ -36,13 +36,18 @@ public class ProductsController {
     }
 
     @FXML
-    void onBackClicked(ActionEvent event) {
+    void onBackClicked(ActionEvent event) throws IOException {
+        System.out.println("I was clicked");
         InventoryApplication.back();
     }
 
     @FXML
     void onRemoveClicked(ActionEvent event) {
-
+        Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            products.remove(selectedProduct);
+        }
+        lvProducts.refresh();
     }
 
     @FXML

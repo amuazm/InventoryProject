@@ -28,7 +28,7 @@ public class InventoriesController {
     }
 
     @FXML
-    void onBackClicked(ActionEvent event) {
+    void onBackClicked(ActionEvent event) throws IOException {
         InventoryApplication.back();
     }
 

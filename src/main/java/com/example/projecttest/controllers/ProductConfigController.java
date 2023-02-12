@@ -35,7 +35,7 @@ public class ProductConfigController {
     private TextField tfSellingPrice;
 
     @FXML
-    void onCancelClicked(ActionEvent event) {
+    void onCancelClicked(ActionEvent event) throws IOException {
         InventoryApplication.back();
     }
 
@@ -48,8 +48,8 @@ public class ProductConfigController {
                 Double.parseDouble(tfOrderCost.getText()),
                 Double.parseDouble(tfSellingPrice.getText())
         );
-        System.out.println(product);
         products.add(product);
+        InventoryApplication.unbackable();
         InventoryApplication.openProduct(product);
     }
 

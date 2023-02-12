@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class InventoryConfigController {
 
     @FXML
@@ -24,7 +26,7 @@ public class InventoryConfigController {
     private TextField txtNotes;
 
     @FXML
-    void onCancelClicked(ActionEvent event) {
+    void onCancelClicked(ActionEvent event) throws IOException {
         InventoryApplication.back();
     }
 

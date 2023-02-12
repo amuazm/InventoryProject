@@ -1,7 +1,6 @@
 package com.example.projecttest;
 
 import com.example.projecttest.controllers.ProductController;
-import com.example.projecttest.controllers.ProductsController;
 import com.example.projecttest.models.Product;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,12 +13,14 @@ import java.util.Stack;
 public class InventoryApplication extends javafx.application.Application {
     private static Stage primaryStage;
     private static Stack<Scene> sceneStack;
+    private static Stack<String> sceneStackStr;
     public static ArrayList<Product> products = new ArrayList<>();
 
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = new Stage();
         sceneStack = new Stack<>();
+        sceneStackStr = new Stack<>();
         openLogin();
     }
 
@@ -27,18 +28,33 @@ public class InventoryApplication extends javafx.application.Application {
         launch();
     }
 
-    public static void back() {
-        primaryStage.setScene(sceneStack.get(sceneStack.size() - 1));
+    public static void back() throws IOException {
         sceneStack.pop();
+        sceneStackStr.pop();
+
+        sceneStack.pop();
+        String toReInit = sceneStackStr.pop();
+
+        open(toReInit);
+    }
+
+    public static void unbackable() {
+        sceneStack.pop();
+        sceneStackStr.pop();
     }
 
     private static FXMLLoader open(String fxmlName) throws IOException {
-        sceneStack.push(primaryStage.getScene());
-
         FXMLLoader fxmlLoader = getLoader(fxmlName);
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        sceneStack.push(scene);
+        sceneStackStr.push(fxmlName);
+        for (String s : sceneStackStr) {
+            System.out.print(s + ", ");
+        }
+        System.out.println();
 
         return fxmlLoader;
     }

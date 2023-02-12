@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+import java.io.IOException;
+
 public class InventoryStatsController {
 
     @FXML
@@ -36,7 +38,7 @@ public class InventoryStatsController {
     }
 
     @FXML
-    void onBackClicked(ActionEvent event) {
+    void onBackClicked(ActionEvent event) throws IOException {
         InventoryApplication.back();
     }
 

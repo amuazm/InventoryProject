@@ -43,7 +43,7 @@ public class ProductController {
 
     @FXML
     void onBackClicked(ActionEvent event) throws IOException {
-        InventoryApplication.openProducts();
+        InventoryApplication.back();
     }
 
     @FXML
