@@ -2,6 +2,8 @@ package com.example.projecttest.controllers;
 
 import com.example.projecttest.InventoryApplication;
 import com.example.projecttest.models.Inventory;
+import com.example.projecttest.models.Product;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,11 +35,12 @@ public class InventoryController {
     private Label lblInventoryName;
 
     @FXML
-    private ListView<?> lvProducts;
+    private ListView<Product> lvProducts;
 
     @FXML
-    void onAddProductClicked(ActionEvent event) {
-
+    void onAddProductClicked(ActionEvent event) throws IOException {
+        InventoryApplication.openProducts(inventory);
+        InventoryApplication.unbackable();
     }
 
     @FXML
@@ -62,16 +65,19 @@ public class InventoryController {
         InventoryApplication.back();
     }
 
-    private void refresh() {
+    @FXML
+    private void initialize() {
         if (inventory == null) {
             return;
         }
+
+        lvProducts.setItems(FXCollections.observableArrayList(inventory.getProducts()));
 
         lblInventoryName.setText(inventory.getName());
     }
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
-        refresh();
+        initialize();
     }
 }

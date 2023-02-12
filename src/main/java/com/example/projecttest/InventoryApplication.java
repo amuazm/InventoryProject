@@ -1,9 +1,6 @@
 package com.example.projecttest;
 
-import com.example.projecttest.controllers.InventoryConfigController;
-import com.example.projecttest.controllers.InventoryController;
-import com.example.projecttest.controllers.ProductConfigController;
-import com.example.projecttest.controllers.ProductController;
+import com.example.projecttest.controllers.*;
 import com.example.projecttest.models.Inventory;
 import com.example.projecttest.models.Product;
 import javafx.fxml.FXMLLoader;
@@ -107,6 +104,13 @@ public class InventoryApplication extends javafx.application.Application {
 
     public static void openProducts() throws IOException {
         open("products.fxml");
+    }
+
+    public static void openProducts(Inventory inventory) throws IOException {
+        FXMLLoader fxmlLoader = open("products.fxml");
+
+        ProductsController productsController = fxmlLoader.getController();
+        productsController.setInventory(inventory);
     }
 
     public static void openProduct(Product product) throws IOException {

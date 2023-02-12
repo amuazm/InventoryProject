@@ -54,7 +54,7 @@ public class HomeController {
 
     @FXML
     void onLogoutClicked(ActionEvent event) throws Exception {
-        InventoryApplication.openLogin();
+        InventoryApplication.back();
     }
 
 }

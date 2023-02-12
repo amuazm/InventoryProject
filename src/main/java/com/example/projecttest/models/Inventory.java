@@ -13,6 +13,7 @@ public class Inventory {
         this.name = name;
         this.address = address;
         this.notes = notes;
+        products = new ArrayList<>();
     }
 
     public String getName() {

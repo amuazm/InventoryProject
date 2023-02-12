@@ -1,6 +1,7 @@
 package com.example.projecttest.controllers;
 
 import com.example.projecttest.InventoryApplication;
+import com.example.projecttest.models.Inventory;
 import com.example.projecttest.models.Product;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -17,6 +18,10 @@ import java.io.IOException;
 import static com.example.projecttest.InventoryApplication.allProducts;
 
 public class ProductsController {
+
+    private Inventory inventory;
+
+    private boolean isAddingToInventory;
 
     @FXML
     private Button btnAdd;
@@ -45,7 +50,7 @@ public class ProductsController {
         Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
             allProducts.remove(selectedProduct);
-            refresh();
+            initialize();
         }
     }
 
@@ -77,7 +82,13 @@ public class ProductsController {
                 Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
                 if (selectedProduct != null) {
                     try {
-                        InventoryApplication.openProduct(selectedProduct);
+                        if (!isAddingToInventory) {
+                            InventoryApplication.openProduct(selectedProduct);
+                        } else {
+                            inventory.getProducts().add(selectedProduct);
+                            InventoryApplication.openInventory(inventory);
+                            InventoryApplication.unbackable();
+                        }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -86,7 +97,9 @@ public class ProductsController {
         });
     }
 
-    private void refresh() {
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+        isAddingToInventory = true;
         initialize();
     }
 
