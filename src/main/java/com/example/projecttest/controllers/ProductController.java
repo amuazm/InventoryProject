@@ -52,8 +52,9 @@ public class ProductController {
     }
 
     @FXML
-    void onEditProductClicked(ActionEvent event) {
-
+    void onEditProductClicked(ActionEvent event) throws IOException {
+        // InventoryApplication.unbackable();
+        InventoryApplication.openProductConfig(product);
     }
 
     private void refresh() {

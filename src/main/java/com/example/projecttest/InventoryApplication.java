@@ -1,5 +1,6 @@
 package com.example.projecttest;
 
+import com.example.projecttest.controllers.ProductConfigController;
 import com.example.projecttest.controllers.ProductController;
 import com.example.projecttest.models.Product;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,7 @@ public class InventoryApplication extends javafx.application.Application {
 
     public static void back() throws IOException {
         sceneStackStr.pop();
+
         String toReInit = sceneStackStr.pop();
         open(toReInit);
     }
@@ -102,5 +104,12 @@ public class InventoryApplication extends javafx.application.Application {
 
     public static void openProductConfig() throws IOException {
         open("product-config.fxml");
+    }
+
+    public static void openProductConfig(Product product) throws IOException {
+        FXMLLoader fxmlLoader = open("product-config.fxml");
+
+        ProductConfigController productConfigController = fxmlLoader.getController();
+        productConfigController.setProduct(product);
     }
 }

@@ -13,6 +13,10 @@ import static com.example.projecttest.InventoryApplication.products;
 
 public class ProductConfigController {
 
+    private Product product;
+
+    private boolean isEditing;
+
     @FXML
     private Button btnCancel;
 
@@ -36,21 +40,59 @@ public class ProductConfigController {
 
     @FXML
     void onCancelClicked(ActionEvent event) throws IOException {
-        InventoryApplication.back();
+        if (!isEditing) {
+            InventoryApplication.back();
+        } else {
+            InventoryApplication.unbackable();
+            InventoryApplication.openProduct(product);
+        }
     }
 
     @FXML
     void onSaveClicked(ActionEvent event) throws IOException {
-        Product product = new Product(
-                tfName.getText(),
-                tfSKU.getText(),
-                tfOrderLink.getText(),
-                Double.parseDouble(tfOrderCost.getText()),
-                Double.parseDouble(tfSellingPrice.getText())
-        );
-        products.add(product);
+        if (!isEditing) {
+            // Adding a new product
+            System.out.println("ADDING PRODUCT");
+            product = new Product(
+                    tfName.getText(),
+                    tfSKU.getText(),
+                    tfOrderLink.getText(),
+                    Double.parseDouble(tfOrderCost.getText()),
+                    Double.parseDouble(tfSellingPrice.getText())
+            );
+            products.add(product);
+        } else {
+            // Editing an existing product
+            System.out.println("EDITING PRODUCT");
+            product.setName(tfName.getText());
+            product.setSKU(tfSKU.getText());
+            product.setOrderLink(tfOrderLink.getText());
+            product.setOrderCost(Double.parseDouble(tfOrderCost.getText()));
+            product.setSellingPrice(Double.parseDouble(tfSellingPrice.getText()));
+        }
         InventoryApplication.unbackable();
         InventoryApplication.openProduct(product);
+    }
+
+    private void refresh() {
+        if (product == null) {
+            isEditing = false;
+            return;
+        } else {
+            isEditing = true;
+            InventoryApplication.unbackable();
+        }
+
+        tfName.setText(product.getName());
+        tfSKU.setText(product.getSKU());
+        tfOrderLink.setText(product.getOrderLink());
+        tfOrderCost.setText(String.valueOf(product.getOrderCost()));
+        tfSellingPrice.setText(String.valueOf(product.getSellingPrice()));
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        refresh();
     }
 
 }
