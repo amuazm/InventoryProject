@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class ProductController {
+
     private Product product;
 
     @FXML

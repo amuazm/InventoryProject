@@ -1,6 +1,7 @@
 package com.example.projecttest;
 
 import com.example.projecttest.controllers.ProductController;
+import com.example.projecttest.controllers.ProductsController;
 import com.example.projecttest.models.Product;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
