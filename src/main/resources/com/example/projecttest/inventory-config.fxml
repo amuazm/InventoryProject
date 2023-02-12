@@ -24,9 +24,9 @@
       <Label text="Name" GridPane.rowIndex="1" />
       <Label text="Address" GridPane.rowIndex="2" />
       <Label text="Notes" GridPane.rowIndex="3" />
-      <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField fx:id="txtAddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="txtNotes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="tfName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="tfAddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="tfNotes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onSaveClicked" text="Save" GridPane.rowIndex="4" />
       <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onCancelClicked" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    </children>

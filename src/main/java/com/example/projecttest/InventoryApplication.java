@@ -1,7 +1,10 @@
 package com.example.projecttest;
 
+import com.example.projecttest.controllers.InventoryConfigController;
+import com.example.projecttest.controllers.InventoryController;
 import com.example.projecttest.controllers.ProductConfigController;
 import com.example.projecttest.controllers.ProductController;
+import com.example.projecttest.models.Inventory;
 import com.example.projecttest.models.Product;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +17,8 @@ import java.util.Stack;
 public class InventoryApplication extends javafx.application.Application {
     private static Stage primaryStage;
     private static Stack<String> sceneStackStr;
-    public static ArrayList<Product> products = new ArrayList<>();
+    public static ArrayList<Product> allProducts = new ArrayList<>();
+    public static ArrayList<Inventory> inventories = new ArrayList<>();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -83,12 +87,22 @@ public class InventoryApplication extends javafx.application.Application {
         open("inventories.fxml");
     }
 
-    public static void openInventoryStats() throws IOException {
-        open("inventory-stats.fxml");
+    public static void openInventory(Inventory inventory) throws IOException {
+        FXMLLoader fxmlLoader = open("inventory.fxml");
+
+        InventoryController inventoryController = fxmlLoader.getController();
+        inventoryController.setInventory(inventory);
     }
 
     public static void openInventoryConfig() throws IOException {
         open("inventory-config.fxml");
+    }
+
+    public static void openInventoryConfig(Inventory inventory) throws IOException {
+        FXMLLoader fxmlLoader = open("inventory-config.fxml");
+
+        InventoryConfigController inventoryConfigController = fxmlLoader.getController();
+        inventoryConfigController.setInventory(inventory);
     }
 
     public static void openProducts() throws IOException {

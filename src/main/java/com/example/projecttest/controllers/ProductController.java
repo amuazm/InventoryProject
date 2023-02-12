@@ -47,14 +47,16 @@ public class ProductController {
     }
 
     @FXML
-    void onDeleteProductClicked(ActionEvent event) {
-
+    void onDeleteProductClicked(ActionEvent event) throws IOException {
+        InventoryApplication.allProducts.remove(product);
+        InventoryApplication.back();
     }
 
     @FXML
     void onEditProductClicked(ActionEvent event) throws IOException {
-        // InventoryApplication.unbackable();
         InventoryApplication.openProductConfig(product);
+        // Wisdom behind unbackable here - we don't want to render an unfilled Product page
+        InventoryApplication.unbackable();
     }
 
     private void refresh() {

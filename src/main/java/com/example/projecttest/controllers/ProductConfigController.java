@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-import static com.example.projecttest.InventoryApplication.products;
+import static com.example.projecttest.InventoryApplication.allProducts;
 
 public class ProductConfigController {
 
@@ -60,7 +60,7 @@ public class ProductConfigController {
                     Double.parseDouble(tfOrderCost.getText()),
                     Double.parseDouble(tfSellingPrice.getText())
             );
-            products.add(product);
+            allProducts.add(product);
         } else {
             // Editing an existing product
             System.out.println("EDITING PRODUCT");
@@ -80,7 +80,6 @@ public class ProductConfigController {
             return;
         } else {
             isEditing = true;
-            InventoryApplication.unbackable();
         }
 
         tfName.setText(product.getName());

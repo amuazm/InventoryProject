@@ -14,7 +14,7 @@ import javafx.scene.text.Font;
 
 import java.io.IOException;
 
-import static com.example.projecttest.InventoryApplication.products;
+import static com.example.projecttest.InventoryApplication.allProducts;
 
 public class ProductsController {
 
@@ -44,14 +44,14 @@ public class ProductsController {
     void onRemoveClicked(ActionEvent event) {
         Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
-            products.remove(selectedProduct);
+            allProducts.remove(selectedProduct);
+            refresh();
         }
-        lvProducts.refresh();
     }
 
     @FXML
     private void initialize() {
-        lvProducts.setItems(FXCollections.observableArrayList(products));
+        lvProducts.setItems(FXCollections.observableArrayList(allProducts));
 
         lvProducts.setCellFactory(productListView -> new ListCell<>() {
             @Override
@@ -84,6 +84,10 @@ public class ProductsController {
                 }
             }
         });
+    }
+
+    private void refresh() {
+        initialize();
     }
 
 }
