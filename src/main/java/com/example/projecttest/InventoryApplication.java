@@ -4,17 +4,23 @@ import com.example.projecttest.controllers.*;
 import com.example.projecttest.models.Inventory;
 import com.example.projecttest.models.Product;
 import com.example.projecttest.models.ProductHistoryRecord;
+import com.example.projecttest.models.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class InventoryApplication extends javafx.application.Application {
     private static Stage primaryStage;
     private static Stack<String> sceneStackStr;
+    public static ArrayList<User> users = new ArrayList<>();
+    public static User currentUser;
     public static ArrayList<Product> allProducts = new ArrayList<>();
     public static ArrayList<Inventory> inventories = new ArrayList<>();
     public static ArrayList<ProductHistoryRecord> productHistoryRecords = new ArrayList<>();
