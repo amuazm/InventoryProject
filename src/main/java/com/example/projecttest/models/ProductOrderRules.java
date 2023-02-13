@@ -46,4 +46,14 @@ public class ProductOrderRules {
     public void setOrderThresholdPercentage(boolean orderThresholdPercentage) {
         this.isOrderThresholdPercentage = orderThresholdPercentage;
     }
+
+    @Override
+    public String toString() {
+        return "ProductOrderRules{" +
+                "maxStock=" + maxStock +
+                ", orderThreshold=" + orderThreshold +
+                ", isOrderThresholdOrEqual=" + isOrderThresholdOrEqual +
+                ", isOrderThresholdPercentage=" + isOrderThresholdPercentage +
+                '}';
+    }
 }

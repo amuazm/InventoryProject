@@ -19,6 +19,13 @@ public class Inventory {
         products = new HashMap<>();
     }
 
+    public Inventory(String name, String address, String notes, HashMap<Product, ProductOrderRules> products) {
+        this.name = name;
+        this.address = address;
+        this.notes = notes;
+        this.products = products;
+    }
+
     public int getProductCurrentStock(Product product) {
         ProductOrderRules productOrderRules = products.get(product);
         int count = 0;
@@ -75,7 +82,7 @@ public class Inventory {
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", notes='" + notes + '\'' +
+                ", products=" + products +
                 '}';
     }
-
 }

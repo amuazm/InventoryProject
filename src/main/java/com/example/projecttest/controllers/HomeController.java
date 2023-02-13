@@ -1,6 +1,7 @@
 package com.example.projecttest.controllers;
 
 import com.example.projecttest.InventoryApplication;
+import com.example.projecttest.helpers.DataHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,6 +55,9 @@ public class HomeController {
 
     @FXML
     void onLogoutClicked(ActionEvent event) throws Exception {
+        DataHelper.saveUserData();
+        DataHelper.clearData();
+
         InventoryApplication.currentUser = null;
         InventoryApplication.back();
     }

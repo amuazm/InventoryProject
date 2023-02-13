@@ -1,6 +1,7 @@
 package com.example.projecttest.controllers;
 
 import com.example.projecttest.InventoryApplication;
+import com.example.projecttest.helpers.DataHelper;
 import com.example.projecttest.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,9 @@ public class LoginController {
             if (user.getUsername().equals(tfUsername.getText())) {
                 if (user.getPassword().equals(tfPassword.getText())) {
                     InventoryApplication.currentUser = user;
+
+                    DataHelper.loadUserData();
+
                     InventoryApplication.openHome();
                     return;
                 }
@@ -64,20 +68,7 @@ public class LoginController {
             Scanner sc = new Scanner(file);
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
-                int startIndex = line.indexOf("'") + 1;
-                int endIndex = line.indexOf("'", startIndex);
-                String username = line.substring(startIndex, endIndex);
-
-                startIndex = line.indexOf("'", endIndex + 1) + 1;
-                endIndex = line.indexOf("'", startIndex);
-                String password = line.substring(startIndex, endIndex);
-
-                startIndex = line.indexOf("'", endIndex + 1) + 1;
-                endIndex = line.indexOf("'", startIndex);
-                String email = line.substring(startIndex, endIndex);
-
-                User user = new User(username, password, email);
-                InventoryApplication.users.add(user);
+                InventoryApplication.users.add(DataHelper.userFromString(line));
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + file);
