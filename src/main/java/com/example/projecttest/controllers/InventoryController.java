@@ -6,9 +6,14 @@ import com.example.projecttest.models.Product;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 
@@ -80,6 +85,29 @@ public class InventoryController {
         lblInventoryName.setText(inventory.getName());
 
         lvProducts.setItems(FXCollections.observableArrayList(inventory.getProductsAsArrayList()));
+
+        lvProducts.setCellFactory(productListView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Product product, boolean empty) {
+                super.updateItem(product, empty);
+
+                if (empty || product == null) {
+                    setGraphic(null);
+                } else {
+                    VBox vBox = new VBox();
+                    Label nameLabel = new Label(product.getName());
+                    Label skuLabel = new Label("SKU: " + product.getSKU());
+                    nameLabel.setFont(Font.font(12));
+                    skuLabel.setFont(Font.font(8));
+                    vBox.getChildren().addAll(nameLabel, skuLabel);
+
+                    Label currentStockLabel = new Label(inventory.getProductCurrentStock(product) + "/" + inventory.getProducts().get(product).getMaxStock());
+                    HBox hBox = new HBox();
+                    hBox.getChildren().addAll(vBox, currentStockLabel);
+                    setGraphic(hBox);
+                }
+            }
+        });
 
         // Double-click on items
         lvProducts.setOnMouseClicked(event -> {

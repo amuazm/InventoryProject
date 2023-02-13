@@ -55,24 +55,22 @@ public class InventoriesController {
     private void initialize() {
         lvInventories.setItems(FXCollections.observableArrayList(inventories));
 
-        // lvProducts.setCellFactory(productListView -> new ListCell<>() {
-        //     @Override
-        //     protected void updateItem(Product item, boolean empty) {
-        //         super.updateItem(item, empty);
-        //
-        //         if (empty || item == null) {
-        //             setGraphic(null);
-        //         } else {
-        //             VBox vBox = new VBox();
-        //             Label nameLabel = new Label(item.getName());
-        //             Label skuLabel = new Label("SKU: " + item.getSKU());
-        //             nameLabel.setFont(Font.font(12));
-        //             skuLabel.setFont(Font.font(8));
-        //             vBox.getChildren().addAll(nameLabel, skuLabel);
-        //             setGraphic(vBox);
-        //         }
-        //     }
-        // });
+        lvInventories.setCellFactory(inventoryListView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Inventory inventory, boolean empty) {
+                super.updateItem(inventory, empty);
+
+                if (empty || inventory == null) {
+                    setGraphic(null);
+                } else {
+                    VBox vBox = new VBox();
+                    Label nameLabel = new Label(inventory.getName());
+                    nameLabel.setFont(Font.font(12));
+                    vBox.getChildren().addAll(nameLabel);
+                    setGraphic(vBox);
+                }
+            }
+        });
 
         lvInventories.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
