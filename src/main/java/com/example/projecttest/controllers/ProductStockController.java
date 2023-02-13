@@ -22,6 +22,7 @@ public class ProductStockController {
 
     private boolean isEditing;
 
+    private int currentStock;
     private boolean isOrderThresholdOrEqual;
     private boolean isOrderThresholdPercentage;
 
@@ -105,6 +106,7 @@ public class ProductStockController {
 
     }
 
+    // Saving ProductOrderRules
     @FXML
     void onBackClicked(ActionEvent event) throws IOException {
         if (!isEditing) {
@@ -136,6 +138,7 @@ public class ProductStockController {
         if (isEditing) {
             System.out.println("ITS EDITIN TIME");
             productOrderRules = inventory.getProducts().get(product);
+            currentStock = productOrderRules.getCurrentStock();
             tfMaxStock.setText(String.valueOf(productOrderRules.getMaxStock()));
             tfOrderThreshold.setText(String.valueOf(productOrderRules.getOrderThreshold()));
             isOrderThresholdOrEqual = productOrderRules.isOrderThresholdOrEqual();
