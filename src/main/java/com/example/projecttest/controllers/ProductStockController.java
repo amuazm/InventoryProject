@@ -3,7 +3,10 @@ package com.example.projecttest.controllers;
 import com.example.projecttest.InventoryApplication;
 import com.example.projecttest.models.Inventory;
 import com.example.projecttest.models.Product;
+import com.example.projecttest.models.ProductHistoryRecord;
 import com.example.projecttest.models.ProductOrderRules;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +16,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+
+import static com.example.projecttest.InventoryApplication.allProducts;
+import static com.example.projecttest.InventoryApplication.productHistoryRecords;
 
 public class ProductStockController {
 
@@ -66,16 +72,18 @@ public class ProductStockController {
     @FXML
     private TextField tfHistoryDate;
     @FXML
-    private ChoiceBox<?> cbHistoryType;
+    private ChoiceBox<String> cbHistoryType;
     @FXML
     private ChoiceBox<?> cbHistoryInventory;
     @FXML
     private TextField tfHistoryCount;
     @FXML
-    private ListView<?> lvHistory;
+    private ListView<ProductHistoryRecord> lvHistory;
 
     @FXML
-    private Button btnBack;
+    private Button btnSave;
+    @FXML
+    private Button btnCancel;
 
     @FXML
     void onOrderLessClicked(ActionEvent event) {
@@ -106,13 +114,28 @@ public class ProductStockController {
 
     }
 
-    // Saving ProductOrderRules
     @FXML
-    void onBackClicked(ActionEvent event) throws IOException {
+    void onHistoryAddClicked(ActionEvent event) {
+        productHistoryRecords.add(new ProductHistoryRecord(
+                product,
+                tfHistoryDate.getText(),
+                cbHistoryType.getValue(),
+                inventory,
+                Integer.parseInt(tfHistoryCount.getText())
+        ));
+        initialize();
+    }
+
+    @FXML
+    void onHistoryRemoveClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onSaveClicked(ActionEvent event) throws IOException {
         if (!isEditing) {
             // Initialising ProductOrderRules for a Product
             inventory.getProducts().put(product, new ProductOrderRules(
-                    0,
                     Double.parseDouble(tfMaxStock.getText()),
                     Double.parseDouble(tfOrderThreshold.getText()),
                     isOrderThresholdOrEqual,
@@ -124,8 +147,20 @@ public class ProductStockController {
             productOrderRules.setOrderThresholdOrEqual(isOrderThresholdOrEqual);
             productOrderRules.setOrderThresholdPercentage(isOrderThresholdPercentage);
         }
-        InventoryApplication.openInventory(inventory);
         InventoryApplication.unbackable();
+        InventoryApplication.openInventory(inventory);
+    }
+
+    @FXML
+    void onCancelClicked(ActionEvent event) throws IOException {
+        if (!isEditing) {
+            // Is initialising, cancel and choose another product
+            InventoryApplication.unbackable();
+            InventoryApplication.openProducts(inventory);
+        } else {
+            InventoryApplication.unbackable();
+            InventoryApplication.openInventory(inventory);
+        }
     }
 
     @FXML
@@ -136,9 +171,8 @@ public class ProductStockController {
 
         isEditing = inventory.getProducts().containsKey(product);
         if (isEditing) {
-            System.out.println("ITS EDITIN TIME");
             productOrderRules = inventory.getProducts().get(product);
-            currentStock = productOrderRules.getCurrentStock();
+            currentStock = inventory.getProductCurrentStock(product);
             tfMaxStock.setText(String.valueOf(productOrderRules.getMaxStock()));
             tfOrderThreshold.setText(String.valueOf(productOrderRules.getOrderThreshold()));
             isOrderThresholdOrEqual = productOrderRules.isOrderThresholdOrEqual();
@@ -156,12 +190,17 @@ public class ProductStockController {
         isOrderThresholdOrEqual = false;
         isOrderThresholdPercentage = false;
         tfOrderThreshold.textProperty().addListener((observable, oldValue, newValue) -> updateRules());
+
+        // History
+        lvHistory.setItems(FXCollections.observableArrayList(productHistoryRecords));
+        ObservableList<String> options = FXCollections.observableArrayList("Order", "Sold", "Moved");
+        cbHistoryType.setItems(options);
     }
 
     private void updateRules() {
         String availableMax = "";
         if (inventory.getProducts().containsKey(product)) {
-            availableMax += inventory.getProducts().get(product).getCurrentStock();
+            availableMax += inventory.getProductCurrentStock(product);
         } else {
             availableMax += "0";
         }

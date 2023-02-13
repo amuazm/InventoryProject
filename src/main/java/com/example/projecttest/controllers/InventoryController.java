@@ -41,8 +41,8 @@ public class InventoryController {
 
     @FXML
     void onAddProductClicked(ActionEvent event) throws IOException {
-        InventoryApplication.openProducts(inventory);
         InventoryApplication.unbackable();
+        InventoryApplication.openProducts(inventory);
     }
 
     @FXML
@@ -87,6 +87,7 @@ public class InventoryController {
                 Product selectedProduct = lvProducts.getSelectionModel().getSelectedItem();
                 if (selectedProduct != null) {
                     try {
+                        InventoryApplication.unbackable();
                         InventoryApplication.openProductStock(inventory, selectedProduct);
                     } catch (IOException e) {
                         throw new RuntimeException(e);

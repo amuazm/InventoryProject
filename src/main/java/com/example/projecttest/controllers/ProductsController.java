@@ -51,6 +51,11 @@ public class ProductsController {
 
     @FXML
     void onBackClicked(ActionEvent event) throws IOException {
+        if (isAddingToInventory) {
+            InventoryApplication.unbackable();
+            InventoryApplication.openInventory(inventory);
+            return;
+        }
         InventoryApplication.back();
     }
 

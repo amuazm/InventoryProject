@@ -46,7 +46,6 @@ public class InventoryConfigController {
     void onSaveClicked(ActionEvent event) throws IOException {
         if (!isEditing) {
             // Adding a new inventory
-            System.out.println("ADDING PRODUCT");
             inventory = new Inventory(
                     tfName.getText(),
                     tfAddress.getText(),
@@ -55,7 +54,6 @@ public class InventoryConfigController {
             inventories.add(inventory);
         } else {
             // Editing an existing inventory
-            System.out.println("EDITING PRODUCT");
             inventory.setName(tfName.getText());
             inventory.setAddress(tfAddress.getText());
             inventory.setNotes(tfNotes.getText());

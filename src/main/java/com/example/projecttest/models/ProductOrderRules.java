@@ -1,27 +1,18 @@
 package com.example.projecttest.models;
 
-public class ProductOrderRules {
-    private int currentStock;
-    private double maxStock;
+import com.example.projecttest.InventoryApplication;
 
+public class ProductOrderRules {
+    private double maxStock;
     private double orderThreshold;
     private boolean isOrderThresholdOrEqual;
     private boolean isOrderThresholdPercentage;
 
-    public ProductOrderRules(int currentStock, double maxStock, double orderThreshold, boolean orderThresholdOrEqual, boolean orderThresholdIsPercentage) {
-        this.currentStock = currentStock;
+    public ProductOrderRules(double maxStock, double orderThreshold, boolean orderThresholdOrEqual, boolean orderThresholdIsPercentage) {
         this.maxStock = maxStock;
         this.orderThreshold = orderThreshold;
         this.isOrderThresholdOrEqual = orderThresholdOrEqual;
         this.isOrderThresholdPercentage = orderThresholdIsPercentage;
-    }
-
-    public int getCurrentStock() {
-        return currentStock;
-    }
-
-    public void setCurrentStock(int currentStock) {
-        this.currentStock = currentStock;
     }
 
     public double getMaxStock() {

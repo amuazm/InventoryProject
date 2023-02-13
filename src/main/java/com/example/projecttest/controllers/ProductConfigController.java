@@ -52,7 +52,6 @@ public class ProductConfigController {
     void onSaveClicked(ActionEvent event) throws IOException {
         if (!isEditing) {
             // Adding a new product
-            System.out.println("ADDING PRODUCT");
             product = new Product(
                     tfName.getText(),
                     tfSKU.getText(),
@@ -63,7 +62,6 @@ public class ProductConfigController {
             allProducts.add(product);
         } else {
             // Editing an existing product
-            System.out.println("EDITING PRODUCT");
             product.setName(tfName.getText());
             product.setSKU(tfSKU.getText());
             product.setOrderLink(tfOrderLink.getText());

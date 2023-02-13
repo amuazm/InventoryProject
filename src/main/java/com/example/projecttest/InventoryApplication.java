@@ -3,6 +3,7 @@ package com.example.projecttest;
 import com.example.projecttest.controllers.*;
 import com.example.projecttest.models.Inventory;
 import com.example.projecttest.models.Product;
+import com.example.projecttest.models.ProductHistoryRecord;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,6 +17,7 @@ public class InventoryApplication extends javafx.application.Application {
     private static Stack<String> sceneStackStr;
     public static ArrayList<Product> allProducts = new ArrayList<>();
     public static ArrayList<Inventory> inventories = new ArrayList<>();
+    public static ArrayList<ProductHistoryRecord> productHistoryRecords = new ArrayList<>();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -40,22 +42,25 @@ public class InventoryApplication extends javafx.application.Application {
     }
 
     private static FXMLLoader open(String fxmlName) throws IOException {
+        sceneStackStr.push(fxmlName);
+
         FXMLLoader fxmlLoader = getLoader(fxmlName);
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // push should be put at the first line
-        // printing should be at the end
-        sceneStackStr.push(fxmlName);
-        sceneStackStr.forEach(s -> System.out.print(s + ", "));
-        System.out.println();
+        printSceneStackStr();
 
         return fxmlLoader;
     }
 
     private static FXMLLoader getLoader(String fxmlName) {
         return new FXMLLoader(InventoryApplication.class.getResource(fxmlName));
+    }
+
+    public static void printSceneStackStr() {
+        sceneStackStr.forEach(s -> System.out.print(s + ", "));
+        System.out.println();
     }
 
     public static void openLogin() throws IOException {

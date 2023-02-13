@@ -48,14 +48,15 @@
       <Button fx:id="btnOrderThisItem" mnemonicParsing="false" onAction="#onOrderThisItemClicked" text="Order This Item" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <Label text="History:" GridPane.rowIndex="7" />
       <ListView fx:id="lvHistory" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10" />
-      <Button fx:id="btnHistoryAdd" mnemonicParsing="false" text="Add" GridPane.rowIndex="8" />
-      <Button fx:id="btnHistoryRemove" mnemonicParsing="false" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Button fx:id="btnHistoryAdd" mnemonicParsing="false" onAction="#onHistoryAddClicked" text="Add" GridPane.rowIndex="8" />
+      <Button fx:id="btnHistoryRemove" mnemonicParsing="false" onAction="#onHistoryRemoveClicked" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <TextField fx:id="tfHistoryDate" GridPane.rowIndex="9" />
       <TextField fx:id="tfHistoryCount" GridPane.columnIndex="3" GridPane.rowIndex="9" />
       <ChoiceBox fx:id="cbHistoryType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <ChoiceBox fx:id="cbHistoryInventory" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-      <Button fx:id="btnBack" mnemonicParsing="false" onAction="#onBackClicked" text="Back" GridPane.rowIndex="11" />
+      <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onCancelClicked" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="11" />
       <TextField fx:id="tfMaxStock" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="Max:" GridPane.rowIndex="2" />
+      <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onSaveClicked" text="Save" GridPane.rowIndex="11" />
    </children>
 </GridPane>

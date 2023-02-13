@@ -1,5 +1,7 @@
 package com.example.projecttest.models;
 
+import com.example.projecttest.InventoryApplication;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,6 +17,20 @@ public class Inventory {
         this.address = address;
         this.notes = notes;
         products = new HashMap<>();
+    }
+
+    public int getProductCurrentStock(Product product) {
+        ProductOrderRules productOrderRules = products.get(product);
+        int count = 0;
+        for (ProductHistoryRecord productHistoryRecord : InventoryApplication.productHistoryRecords) {
+            if (productHistoryRecord.getInventory().equals(this)) {
+                if (productHistoryRecord.getProduct().equals(product)) {
+                    count += productHistoryRecord.getCount();
+                }
+            }
+        }
+
+        return count;
     }
 
     public String getName() {
